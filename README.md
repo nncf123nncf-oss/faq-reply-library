@@ -49,8 +49,13 @@ src/
 ├── components/FAQForm.tsx      登録フォーム
 ├── components/FAQList.tsx      一覧と0件表示の出し分け
 ├── components/FAQCard.tsx      FAQ1件（コピー・削除・★）
-└── App.tsx                     状態の保持と保存
+├── App.tsx                     状態の保持と保存
+├── App.css                     画面のスタイル
+└── index.css                   配色・書体の定義（ダークモード対応）
 ```
+
+見出しは明朝、本文はゴシックで組んでいる。日本語の明朝を持たない端末では
+ゴシックにフォールバックする（Webフォントは読み込まない。通信を発生させないため）。
 
 ## 使用技術
 

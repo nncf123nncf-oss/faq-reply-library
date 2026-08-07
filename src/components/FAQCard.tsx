@@ -26,7 +26,7 @@ export function FAQCard({ item, onDelete, onToggleFavorite }: Props) {
   }, [copyFailed])
 
   async function handleCopy() {
-    // コピーするのは常に「このカードの返信文」。他のカードの文が混ざらないよう item から直接読む
+    // コピーするのは常に「この項目の返信文」。他の項目の文が混ざらないよう item から直接読む
     try {
       await navigator.clipboard.writeText(item.answer)
       setCopyFailed(false)
@@ -38,8 +38,8 @@ export function FAQCard({ item, onDelete, onToggleFavorite }: Props) {
   }
 
   return (
-    <article className="card faq">
-      <div className="faq-head">
+    <article className={copied ? 'card copied' : 'card'}>
+      <div className="card-tab">
         <span className="tag">{categoryLabel(item.category)}</span>
         <button
           type="button"
@@ -54,18 +54,14 @@ export function FAQCard({ item, onDelete, onToggleFavorite }: Props) {
       </div>
 
       {/* 本文はテキストとして描画する。HTMLとしては解釈しない */}
-      <h3 className="question">{item.question}</h3>
+      <h2 className="question">{item.question}</h2>
       <p className="answer">{item.answer}</p>
 
-      <div className="faq-actions">
+      <div className="card-actions">
         <button type="button" className="primary" onClick={handleCopy}>
-          {copied ? 'コピーしました' : 'この返信をコピー'}
+          {copied ? '✓ コピーしました' : 'この返信をコピー'}
         </button>
-        <button
-          type="button"
-          className="ghost"
-          onClick={() => onDelete(item.id)}
-        >
+        <button type="button" className="quiet" onClick={() => onDelete(item.id)}>
           削除
         </button>
       </div>
@@ -76,7 +72,7 @@ export function FAQCard({ item, onDelete, onToggleFavorite }: Props) {
       </p>
 
       {copyFailed && (
-        <p className="error" role="alert">
+        <p className="error card-error" role="alert">
           コピーできませんでした。返信文を選んでコピーしてください。
         </p>
       )}

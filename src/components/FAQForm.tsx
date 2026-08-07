@@ -8,9 +8,10 @@ import {
 
 interface Props {
   onAdd: (question: string, answer: string, category: FAQCategory) => void
+  onCancel: () => void
 }
 
-export function FAQForm({ onAdd }: Props) {
+export function FAQForm({ onAdd, onCancel }: Props) {
   const [question, setQuestion] = useState('')
   const [answer, setAnswer] = useState('')
   const [category, setCategory] = useState<FAQCategory>('hours')
@@ -29,25 +30,45 @@ export function FAQForm({ onAdd }: Props) {
   }
 
   return (
-    <form className="card form" onSubmit={handleSubmit}>
-      <h2>返信を登録する</h2>
+    <form className="form" onSubmit={handleSubmit}>
+      <div className="form-row">
+        <label className="field grow">
+          <span className="label">
+            よく聞かれること <em className="required">必須</em>
+            <span className="counter">
+              {question.length} / {MAX_QUESTION_LENGTH}
+            </span>
+          </span>
+          <input
+            type="text"
+            value={question}
+            maxLength={MAX_QUESTION_LENGTH}
+            onChange={(e) => setQuestion(e.target.value)}
+            placeholder="例）駐車場はありますか？"
+          />
+        </label>
 
-      <label className="field">
-        <span className="label">
-          よく聞かれること <em className="required">必須</em>
-        </span>
-        <input
-          type="text"
-          value={question}
-          maxLength={MAX_QUESTION_LENGTH}
-          onChange={(e) => setQuestion(e.target.value)}
-          placeholder="例）駐車場はありますか？"
-        />
-      </label>
+        <label className="field">
+          <span className="label">種類</span>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value as FAQCategory)}
+          >
+            {CATEGORIES.map((c) => (
+              <option key={c.value} value={c.value}>
+                {c.label}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
 
       <label className="field">
         <span className="label">
           返す文章 <em className="required">必須</em>
+          <span className="counter">
+            {answer.length} / {MAX_ANSWER_LENGTH}
+          </span>
         </span>
         <textarea
           value={answer}
@@ -58,24 +79,7 @@ export function FAQForm({ onAdd }: Props) {
         />
         <span className="hint">
           あいさつから結びまで、そのまま送れる形で書いておくと貼るだけで済みます。
-          <span className="counter">
-            {answer.length} / {MAX_ANSWER_LENGTH}文字
-          </span>
         </span>
-      </label>
-
-      <label className="field">
-        <span className="label">種類</span>
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value as FAQCategory)}
-        >
-          {CATEGORIES.map((c) => (
-            <option key={c.value} value={c.value}>
-              {c.label}
-            </option>
-          ))}
-        </select>
       </label>
 
       {error !== '' && (
@@ -84,9 +88,14 @@ export function FAQForm({ onAdd }: Props) {
         </p>
       )}
 
-      <button type="submit" className="primary">
-        登録する
-      </button>
+      <div className="form-actions">
+        <button type="submit" className="primary">
+          登録する
+        </button>
+        <button type="button" className="ghost" onClick={onCancel}>
+          やめる
+        </button>
+      </div>
     </form>
   )
 }

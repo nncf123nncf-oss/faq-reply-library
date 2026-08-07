@@ -8,6 +8,7 @@ interface Props {
   keyword: string
   categoryLabel: string
   onResetCategory: () => void
+  onAddClick: () => void
   onDelete: (id: string) => void
   onToggleFavorite: (id: string) => void
 }
@@ -24,43 +25,64 @@ export function FAQList({
   keyword,
   categoryLabel,
   onResetCategory,
+  onAddClick,
   onDelete,
   onToggleFavorite,
 }: Props) {
   if (reason === 'no-items') {
     return (
-      <p className="empty">
-        まだ登録がありません。登録フォームから、よく聞かれることを1つ入れてみてください。
-      </p>
+      <div className="empty">
+        <p>まだ登録がありません。</p>
+        <p className="empty-sub">
+          いつも聞かれることを1つ入れておくと、次から探して貼るだけになります。
+        </p>
+        <button type="button" className="primary" onClick={onAddClick}>
+          ＋ 最初の返信を登録する
+        </button>
+      </div>
     )
   }
 
   if (reason === 'no-match') {
     return (
-      <p className="empty">「{shorten(keyword)}」に当てはまる返信文がありません。</p>
+      <div className="empty">
+        <p>「{shorten(keyword)}」に当てはまる返信文がありません。</p>
+        <p className="empty-sub">別の言い方で探すか、この機会に登録できます。</p>
+        <button type="button" className="ghost" onClick={onAddClick}>
+          ＋ この返信を登録する
+        </button>
+      </div>
     )
   }
 
   if (reason === 'no-in-category') {
-    return <p className="empty">「{categoryLabel}」にはまだ登録がありません。</p>
+    return (
+      <div className="empty">
+        <p>「{categoryLabel}」にはまだ登録がありません。</p>
+        <button type="button" className="ghost" onClick={onResetCategory}>
+          すべての種類を見る
+        </button>
+      </div>
+    )
   }
 
   if (reason === 'no-match-in-category') {
     return (
-      <p className="empty">
-        いま「{categoryLabel}」だけを表示しています。
-        <br />
-        この中に「{shorten(keyword)}」はありませんでした。
-        <br />
-        <button type="button" className="ghost reset" onClick={onResetCategory}>
+      <div className="empty">
+        <p>
+          いま「{categoryLabel}」だけを表示しています。
+          <br />
+          この中に「{shorten(keyword)}」はありませんでした。
+        </p>
+        <button type="button" className="ghost" onClick={onResetCategory}>
           すべての種類から探す
         </button>
-      </p>
+      </div>
     )
   }
 
   return (
-    <div className="faq-grid">
+    <div className="cards">
       {items.map((item) => (
         <FAQCard
           key={item.id}

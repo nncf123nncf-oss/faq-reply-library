@@ -1,39 +1,57 @@
 :root {
-  --bg: #fbfaf8;
-  --surface: #ffffff;
+  /* 机の上に索引カードを並べた見立て。地はカードより一段沈める */
+  --desk: #e7e2d5;
+  --card: #faf7ef;
   --input-bg: #ffffff;
-  --border: #e4e1dc;
-  --text-1: #26221e;
-  --text-2: #4d4741;
-  --text-3: #8a827a;
-  --accent: #b4552b;
-  --accent-soft: #fbeee7;
-  --quote-bg: #faf7f4;
-  --danger: #c0392b;
-  --star: #e0a32e;
+  --line: #cfc7b3;
+  --line-soft: #e2dccb;
+  --ink: #1f3a5f;
+  /* 濃紺の上に置く文字色。明暗を入れ替えるテーマでは前景も一緒に変える */
+  --on-ink: #ffffff;
+  /* ホバーは「手前に来る」方向で統一する。薄めると押せる状態のほうが読めなくなる */
+  --ink-hover: #16243a;
+  --rule: #c0453a;
+  --rule-fg: #ffffff;
+  --text-1: #23262a;
+  --text-2: #4e5259;
+  --text-3: #85888e;
+  --danger: #a5322a;
+  /* ★は状態を伝える唯一の見た目。非テキストの下限3:1を満たす濃さにする */
+  --star: #96690b;
 
-  font-family: system-ui, -apple-system, 'Segoe UI', 'Hiragino Kaku Gothic ProN',
+  /* 見出しは明朝、本文はゴシック。索引カードの手書きラベルの見立て */
+  --serif: 'Yu Mincho', YuMincho, 'Hiragino Mincho ProN', 'Noto Serif JP',
+    'MS PMincho', serif;
+  --sans: system-ui, -apple-system, 'Segoe UI', 'Hiragino Kaku Gothic ProN',
     'Noto Sans JP', Meiryo, sans-serif;
+
+  font-family: var(--sans);
   line-height: 1.6;
   color: var(--text-1);
-  background: var(--bg);
+  background: var(--desk);
   -webkit-font-smoothing: antialiased;
+  /* 入力欄のプレースホルダー・selectの一覧・スクロールバーをテーマに追従させる */
+  color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #191715;
-    --surface: #221f1d;
-    --input-bg: #1b1917;
-    --border: #37322e;
-    --text-1: #f0ece7;
-    --text-2: #c6bfb7;
-    --text-3: #8f877e;
-    --accent: #d97a4d;
-    --accent-soft: #33241c;
-    --quote-bg: #1d1a18;
-    --danger: #e57365;
-    --star: #e8b74d;
+    --desk: #191a17;
+    --card: #23241f;
+    --input-bg: #1c1d19;
+    --line: #3d3e36;
+    --line-soft: #2e2f28;
+    --ink: #9db8d8;
+    /* 淡い水色の板に白字だと 2.04:1 まで落ちる。前景を暗くして読めるようにする */
+    --on-ink: #10203a;
+    --ink-hover: #c2d6ee;
+    --rule: #cf6055;
+    --rule-fg: #241110;
+    --text-1: #ece9df;
+    --text-2: #bdb9ac;
+    --text-3: #8b887c;
+    --danger: #e07b6e;
+    --star: #e0b552;
   }
 }
 
@@ -44,5 +62,5 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--bg);
+  background: var(--desk);
 }
