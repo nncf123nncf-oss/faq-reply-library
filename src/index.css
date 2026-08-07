@@ -1,0 +1,48 @@
+:root {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --input-bg: #ffffff;
+  --border: #e4e1dc;
+  --text-1: #26221e;
+  --text-2: #4d4741;
+  --text-3: #8a827a;
+  --accent: #b4552b;
+  --accent-soft: #fbeee7;
+  --quote-bg: #faf7f4;
+  --danger: #c0392b;
+  --star: #e0a32e;
+
+  font-family: system-ui, -apple-system, 'Segoe UI', 'Hiragino Kaku Gothic ProN',
+    'Noto Sans JP', Meiryo, sans-serif;
+  line-height: 1.6;
+  color: var(--text-1);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #191715;
+    --surface: #221f1d;
+    --input-bg: #1b1917;
+    --border: #37322e;
+    --text-1: #f0ece7;
+    --text-2: #c6bfb7;
+    --text-3: #8f877e;
+    --accent: #d97a4d;
+    --accent-soft: #33241c;
+    --quote-bg: #1d1a18;
+    --danger: #e57365;
+    --star: #e8b74d;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+}

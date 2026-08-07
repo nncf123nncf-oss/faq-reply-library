@@ -1,0 +1,295 @@
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 20px 64px;
+}
+
+.head h1 {
+  margin: 0 0 8px;
+  font-size: 1.75rem;
+  letter-spacing: 0.01em;
+}
+
+.lead {
+  margin: 0 0 6px;
+  color: var(--text-2);
+}
+
+.note {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-3);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 380px) 1fr;
+  gap: 20px;
+  align-items: start;
+  margin-top: 24px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.col-form {
+  position: sticky;
+  top: 20px;
+}
+
+.form h2 {
+  margin: 0 0 14px;
+  font-size: 1.05rem;
+}
+
+.field {
+  display: block;
+  margin-bottom: 14px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.required {
+  margin-left: 6px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--input-bg);
+  color: inherit;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  line-height: 1.7;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.hint {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.78rem;
+  color: var(--text-3);
+}
+
+.error {
+  margin: 0 0 12px;
+  color: var(--danger);
+  font-size: 0.85rem;
+}
+
+.error.banner {
+  margin: 12px 0 0;
+  padding: 12px 14px;
+  border: 1px solid var(--danger);
+  border-radius: 8px;
+  line-height: 1.7;
+}
+
+.counter {
+  float: right;
+}
+
+/* 画面には出さないが、読み上げには届く */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+
+.primary {
+  padding: 10px 16px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.primary:hover {
+  filter: brightness(1.06);
+}
+
+.ghost {
+  padding: 10px 14px;
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text-2);
+}
+
+.ghost:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.search {
+  margin-bottom: 16px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.chip {
+  padding: 6px 13px;
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text-2);
+  font-size: 0.85rem;
+}
+
+.chip.on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.count {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-3);
+}
+
+.faq-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.faq-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.tag {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.star {
+  padding: 2px 6px;
+  background: transparent;
+  color: var(--text-3);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.star.on {
+  color: var(--star);
+}
+
+.question {
+  margin: 0 0 10px;
+  font-size: 1.02rem;
+  line-height: 1.5;
+  /* 長い質問でも折り返す。日本語は単語境界が無いので任意位置で折る */
+  overflow-wrap: anywhere;
+}
+
+.answer {
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--quote-bg);
+  color: var(--text-2);
+  font-size: 0.92rem;
+  line-height: 1.85;
+  /* 改行をそのまま見せる。返信文は行の分かれ方まで含めて完成形なので */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.faq-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.empty {
+  padding: 40px 20px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  color: var(--text-3);
+  text-align: center;
+  line-height: 1.8;
+  /* 問い合わせ文をそのまま貼られても画面を横に伸ばさない */
+  overflow-wrap: anywhere;
+}
+
+.empty .reset {
+  margin-top: 12px;
+}
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .col-form {
+    position: static;
+  }
+
+  .faq-actions .primary {
+    /* スマートフォンでは指で押しやすいよう、コピーを大きく取る */
+    flex: 1;
+  }
+
+  /* 指で押す的は 44×44px を下回らせない */
+  .star {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .chip {
+    min-height: 44px;
+  }
+}
